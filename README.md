@@ -9,7 +9,7 @@ Parte inicial do projeto acadêmico de Desenvolvimento de Software Multiplatafor
 - Tailwind CSS
 
 ## 🧱 Estrutura
-'''text
+```text
 src/
 ├──componentes/
 |       ├──Footer.jsx # Componentes do rodapé
