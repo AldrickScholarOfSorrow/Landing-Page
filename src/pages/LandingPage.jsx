@@ -1,30 +1,38 @@
 // Importa o React (necessário para JSX)
 import React from "react";
+import peacekeepersImage from "../assets/images/un-peacekeepers.jpg";
 
 // O layout com Header e Footer é controlado pelo App.jsx
 function LandingPage() {
   return (
     // Container para o conteúdo específico da Landing Page
-    <div className="flex flex-col items-center justify-center bg-white text-gray-800 py-12">
-      {/* Placeholder da imagem central */}
-      <div className="w-2/5 aspect-[4/3] bg-gray-200 rounded-lg shadow-inner flex items-center justify-center">
-        <span className="text-gray-500">[ Imagem Principal ]</span>
+    <div className="flex flex-col items-center justify-center text-primary dark:text-dark-text py-12 transition-colors">
+      {/* Imagem central */}
+      <div className="w-full max-w-4xl aspect-video overflow-hidden rounded-lg shadow-lg mb-4">
+        <img
+          src={peacekeepersImage}
+          alt="Soldados de paz da ONU (Capacetes Azuis) fazem patrulha em Bakouma, na República Centro-Africana, em meio ao contexto de violência de grupos armados durante as eleições."
+          className="w-full h-full object-cover"
+        />
       </div>
 
       {/* Pequeno espaçamento abaixo da imagem */}
-      <div className="my-12 w-3/4 border-t border-gray-200"></div>
+      <div className="my-12 w-3/4 border-t border-secondary/20 dark:border-dark-secondary/20 transition-colors"></div>
 
       {/* ===== SEÇÃO "SOBRE NÓS" ===== */}
       <section id="sobre" className="max-w-3xl text-center px-4 pb-16">
-        <h2 className="text-3xl font-semibold mb-6">Sobre o projeto</h2>
-        <p className="text-lg leading-relaxed text-gray-700">
-          Este projeto tem como objetivo criar uma plataforma que coleta e
-          apresenta dados sobre conflitos globais em tempo real. Ele foi
-          desenvolvido como parte de um projeto acadêmico e servirá como base
-          para um sistema futuro de análise e visualização de dados. 
-          Seu foco é o treino de uso pratico de multiplas ferramentas e sistemas
-          para desenvolver um projeto de maneira individual dentro de prazos menores
-        </p>
+        <h2 className="text-3xl font-semibold mb-6">Sobre o Projeto</h2>
+        <div className="text-lg leading-relaxed text-secondary dark:text-dark-text/80 transition-colors space-y-4">
+          <p>
+            Este site foi criado com o objetivo de oferecer acesso rápido, prático e confiável a informações sobre conflitos armados ao redor do mundo. A partir de dados atualizados de fontes públicas, como as APIs ACLED e Restcountries, você pode explorar resumos simples sobre os países envolvidos.
+          </p>
+          <p>
+            A proposta é facilitar o entendimento de temas complexos por meio de uma apresentação clara, objetiva e acessível — tudo em português e sem a necessidade de cadastro.
+          </p>
+          <p>
+            O site foi desenvolvido de forma independente, com foco em quem busca se informar de maneira rápida e descomplicada.
+          </p>
+        </div>
       </section>
     </div>
   );
