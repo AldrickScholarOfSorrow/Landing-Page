@@ -9,6 +9,7 @@ Parte inicial do projeto acadêmico de Desenvolvimento de Software Multiplatafor
 - Tailwind CSS
 
 ## 🧱 Estrutura
+```text
 src/
 ├──componentes/
 |       ├──Footer.jsx # Componentes do rodapé
@@ -27,9 +28,8 @@ Landing page introdutória para um futuro sistema de análise de **conflitos ati
 npm install
 npm run dev
 
-## 📦 Deploy
+## 🌐 Deploy: https://landing-page-sigma-eosin.vercel.app/
 
-Hospedagem recomendada: Vercel
 
 Repositório público para fins acadêmicos.
 
