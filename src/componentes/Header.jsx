@@ -1,21 +1,36 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Header() {
   return (
     <header
-      className="fixed top-0 left-0 w-full bg-white shadow-sm z-50 flex items-center gap-8 px-8 py-4"
+      className="fixed top-0 left-0 w-full bg-lime-800 text-white z-50 flex items-center justify-between px-8 py-4"
     >
-      {/* Placeholder da logo (pode trocar por uma imagem depois) */}
-      <div className="text-xl font-bold">LOGO</div>
+      {/* Logo como link para a página inicial */}
+      <Link to="/" className="text-xl font-bold hover:text-lime-200 transition-colors">
+        LOGO
+      </Link>
 
-      {/* Link que leva até a seção "Sobre Nós" */}
-      <nav>
-        <a
-          href="#sobre"
-          className="text-gray-700 hover:text-gray-900 font-medium transition-colors duration-200"
+      {/* Links de navegação */}
+      <nav className="flex items-center gap-6">
+        <Link
+          to="/"
+          className="font-medium px-4 py-2 rounded-md bg-stone-700 shadow-sm hover:bg-stone-600 transition-colors duration-200"
         >
-          Sobre o projeto
-        </a>
+          Início
+        </Link>
+        <Link
+          to="/conflitos"
+          className="font-medium px-4 py-2 rounded-md bg-stone-700 shadow-sm hover:bg-stone-600 transition-colors duration-200"
+        >
+          Conflitos
+        </Link>
+        <Link
+          to="/global"
+          className="font-medium px-4 py-2 rounded-md bg-stone-700 shadow-sm hover:bg-stone-600 transition-colors duration-200"
+        >
+          No mundo
+        </Link>
       </nav>
     </header>
   );
