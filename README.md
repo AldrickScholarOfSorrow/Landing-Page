@@ -1,4 +1,4 @@
-# 🌍 Landing Page — Conflitos Globais
+# 🌍 Conflitos Globais
 
 Landing page introdutória criada com **React + Vite + Tailwind CSS**.  
 Parte inicial do projeto acadêmico de Desenvolvimento de Software Multiplataforma, que futuramente exibirá dados de **conflitos ativos no mundo** via APIs como **ACLED** e **RestCountries**.
