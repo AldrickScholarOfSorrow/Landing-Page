@@ -22,3 +22,14 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Arquivos gerados pelo Python (Backend)
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ambientes virtuais do Python
+venv/
+.venv/
+env/

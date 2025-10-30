@@ -7,7 +7,6 @@ import Footer from "./componentes/Footer";
 import LandingPage from "./pages/LandingPage";
 import Conflitos from "./pages/Conflitos";
 import Global from "./pages/Global";
-import Teste from "./pages/Teste";
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -33,7 +32,6 @@ function App() {
             <Route path="/" element={<LandingPage />} />
             <Route path="/conflitos" element={<Conflitos />} />
             <Route path="/global" element={<Global />} />
-            <Route path="/teste" element={<Teste />} />
           </Routes>
         </main>
 

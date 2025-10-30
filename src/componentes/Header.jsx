@@ -89,9 +89,27 @@ function Header({ darkMode, toggleDarkMode }) {
       {isMenuOpen && (
         <div className="md:hidden" id="mobile-menu">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            <Link to="/" className="text-gray-300 hover:bg-dark-primary hover:text-white block px-3 py-2 rounded-md text-base font-medium">Início</Link>
-            <Link to="/conflitos" className="text-gray-300 hover:bg-dark-primary hover:text-white block px-3 py-2 rounded-md text-base font-medium">Conflitos</Link>
-            <Link to="/global" className="text-gray-300 hover:bg-dark-primary hover:text-white block px-3 py-2 rounded-md text-base font-medium">No mundo</Link>
+            <Link 
+              to="/" 
+              onClick={() => setIsMenuOpen(false)} 
+              className="text-gray-300 hover:bg-dark-primary hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+            >
+              Início
+            </Link>
+            <Link 
+              to="/conflitos" 
+              onClick={() => setIsMenuOpen(false)} 
+              className="text-gray-300 hover:bg-dark-primary hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+            >
+              Conflitos
+            </Link>
+            <Link 
+              to="/global" 
+              onClick={() => setIsMenuOpen(false)} 
+              className="text-gray-300 hover:bg-dark-primary hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+            >
+              No mundo
+            </Link>
           </div>
         </div>
       )}

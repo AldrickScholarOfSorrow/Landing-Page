@@ -1,0 +1,24 @@
+[
+    {
+        "id": 1,
+        "nome": "Conflito do Oriente",
+        "regiao": "Oriente Medio",
+        "paises": [
+            "Siria",
+            "Irã"
+        ],
+        "data_inicio": "15/03/2011",
+        "descricao": "Guerra civil síria com envolvimento de múltiplos atores regionais e internacionais, resultando em uma crise humanitária complexa."
+    },
+    {
+        "id": 2,
+        "nome": "Conflito do Leste Europeu",
+        "regiao": "Europa Ocidental",
+        "paises": [
+            "Ucrania",
+            "Russia"
+        ],
+        "data_inicio": "24/02/2022",
+        "descricao": "Invasão em larga escala iniciada pela Rússia, marcando a maior guerra convencional na Europa desde a Segunda Guerra Mundial."
+    }
+]
