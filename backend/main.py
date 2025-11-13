@@ -1,6 +1,5 @@
 from flask import Flask
 from flask_cors import CORS
-CORS(app)
 from controllers.conflito_controller import conflito_bp
 
 # Cria a instância da aplicação Flask
@@ -16,4 +15,4 @@ app.register_blueprint(conflito_bp)
 if __name__ == '__main__':
     # O debug=True reinicia o servidor automaticamente a cada alteração no código.
     # Em produção, isso deve ser False.
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000, debug=True)
