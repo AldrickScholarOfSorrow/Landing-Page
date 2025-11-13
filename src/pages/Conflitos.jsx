@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import ConflictCard from "../componentes/ConflictCard";
 
+const API_URL = "https://landing-page-8m3i.onrender.com/conflicts/";
+
 const worldRegions = [
   "África",
   "América Central e Caribe",
@@ -33,7 +35,7 @@ function Conflitos() {
   useEffect(() => {
     const fetchConflicts = async () => {
       try {
-        const response = await fetch("http://127.0.0.1:5000/conflicts/");
+        const response = await fetch(API_URL);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -82,8 +84,8 @@ function Conflitos() {
 
     const isEditing = !!editingConflict;
     const url = isEditing
-      ? `http://127.0.0.1:5000/conflicts/${editingConflict.id}`
-      : "http://127.0.0.1:5000/conflicts/";
+      ? `${API_URL}${editingConflict.id}`
+      : API_URL;
     const method = isEditing ? "PUT" : "POST";
 
     try {
@@ -130,7 +132,7 @@ function Conflitos() {
     if (!conflictToDeleteId) return;
   
     try {
-      const response = await fetch(`http://127.0.0.1:5000/conflicts/${conflictToDeleteId}`, {
+      const response = await fetch(`${API_URL}${conflictToDeleteId}`, {
         method: "DELETE",
       });
       if (response.ok) {

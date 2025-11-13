@@ -1,5 +1,6 @@
 from flask import Flask
 from flask_cors import CORS
+CORS(app)
 from controllers.conflito_controller import conflito_bp
 
 # Cria a instância da aplicação Flask
