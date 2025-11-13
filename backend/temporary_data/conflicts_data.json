@@ -1,14 +1,14 @@
 [
     {
         "id": 1,
+        "data_inicio": "15/03/2011",
+        "descricao": "Guerra civil síria com envolvimento de múltiplos atores regionais e internacionais, resultando em uma crise humanitária complexa.",
         "nome": "Conflito do Oriente",
-        "regiao": "Oriente Medio",
         "paises": [
-            "Siria",
+            "Iraq",
             "Irã"
         ],
-        "data_inicio": "15/03/2011",
-        "descricao": "Guerra civil síria com envolvimento de múltiplos atores regionais e internacionais, resultando em uma crise humanitária complexa."
+        "regiao": "Oriente Medio"
     },
     {
         "id": 2,

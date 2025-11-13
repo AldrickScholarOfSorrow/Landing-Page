@@ -1,7 +1,7 @@
-# 🌍 Conflitos Globais
+# 🌍 Landing Page — Conflitos Globais
 
-Landing page introdutória criada com **React + Vite + Tailwind CSS**.  
-Parte inicial do projeto acadêmico de Desenvolvimento de Software Multiplataforma, que futuramente exibirá dados de **conflitos ativos no mundo** via APIs como **ACLED** e **RestCountries**.
+Site com sistema de exposição de dados de conflitos ativos no mundo. Criado com **React + Vite + Tailwind CSS**.  
+Parte do projeto acadêmico de Desenvolvimento de Software Multiplataforma, que futuramente exibirá dados de **conflitos ativos no mundo** via APIs como **ACLED** e **RestCountries**.
 
 ## 🚀 Tecnologias
 - React
@@ -59,6 +59,6 @@ npm run dev
 
 Repositório público para fins acadêmicos.
 
-✦ Autor: Pedro Reis
+✦ Autor: Pedro Siqueira Ferreira dos Reis Santos
 ✦ Curso: Desenvolvimento de Software Multiplataforma
 ✦ Instituição: Fatec Zona Leste 
