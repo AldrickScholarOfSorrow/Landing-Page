@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import ConflictCard from "../componentes/ConflictCard";
 
-const API_URL = "https://landing-page-sigma-eosin.vercel.app/api/conflicts/";
+const API_URL = "https://landing-page-sigma-eosin.vercel.app/api/conflicts";
 
 const worldRegions = [
   "África",
@@ -36,7 +36,7 @@ function Conflitos() {
   useEffect(() => {
     const fetchConflicts = async () => {
       try {
-        const response = await fetch(API_URL);
+        const response = await fetch(`${API_URL}/all`); // Chama a nova rota explícita
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -85,7 +85,7 @@ function Conflitos() {
 
     const isEditing = !!editingConflict;
     const url = isEditing
-      ? `${API_URL}${editingConflict.id}`
+      ? `${API_URL}/${editingConflict.id}`
       : API_URL;
     const method = isEditing ? "PUT" : "POST";
 
@@ -132,8 +132,8 @@ function Conflitos() {
   const confirmDelete = async () => {
     if (!conflictToDeleteId) return;
   
-    try {
-      const response = await fetch(`${API_URL}${conflictToDeleteId}`, {
+    try { 
+      const response = await fetch(`${API_URL}/${conflictToDeleteId}`, {
         method: "DELETE",
       });
       if (response.ok) {

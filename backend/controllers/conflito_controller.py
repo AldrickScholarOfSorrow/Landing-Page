@@ -15,7 +15,7 @@ def stats_conflitos():
         # Em um app real, seria bom logar o erro e.
         return jsonify({"erro": "Ocorreu um erro ao buscar as estatísticas."}), 500
 
-@conflito_bp.route("/", methods=["GET"])
+@conflito_bp.route("/all", methods=["GET"])
 def get_conflitos():
     """Endpoint para listar todos os conflitos."""
     conflicts = get_all_conflicts()
