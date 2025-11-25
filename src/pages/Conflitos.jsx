@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import ConflictCard from "../componentes/ConflictCard";
 
 const API_URL = "https://landing-page-8m3i.onrender.com/conflicts/";
@@ -159,8 +160,7 @@ function Conflitos() {
   }
 
   return (
-    // Usamos um Fragment <>...</> para agrupar os elementos sem criar um div extra
-    <>
+    <div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 py-8">
         {conflicts.length > 0 ? (
           conflicts.map((c) => (
@@ -176,98 +176,107 @@ function Conflitos() {
         )}
       </div>
 
-      {/* Botão para adicionar novo conflito */}
-      <button
-        onClick={() => {
-          setEditingConflict(null);
-          setNewConflictData({ nome: '', regiao: '', paises: '', data_inicio: '', descricao: '' });
-          setIsFormVisible(true);
-        }}
-        className="fixed bottom-8 right-8 bg-button dark:bg-dark-secondary text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:bg-button-hover dark:hover:bg-dark-primary transition-transform transform hover:scale-110 z-50"
-        aria-label="Adicionar Conflito"
-      >
-        <span className="text-3xl font-light">+</span>
-      </button>
+      {/* 
+        Usamos createPortal para renderizar o botão e os modais diretamente no body.
+        Isso evita qualquer problema de "stacking context" (z-index) com os elementos pais.
+      */}
+      {createPortal(
+        <>
+          {/* Botão para adicionar novo conflito */}
+          <button
+            onClick={() => {
+              setEditingConflict(null);
+              setNewConflictData({ nome: '', regiao: '', paises: '', data_inicio: '', descricao: '' });
+              setIsFormVisible(true);
+            }}
+            className="fixed bottom-8 right-8 bg-button dark:bg-dark-secondary text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:bg-button-hover dark:hover:bg-dark-primary transition-transform transform hover:scale-110 z-50"
+            aria-label="Adicionar Conflito"
+          >
+            <span className="text-3xl font-light">+</span>
+          </button>
 
-      {/* Modal do Formulário */}
-      {isFormVisible && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
-          <div className="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-xl w-full max-w-md">
-            <h2 className="text-2xl font-bold mb-6 text-primary dark:text-dark-text">
-              {editingConflict ? "Editar Conflito" : "Adicionar Novo Conflito"}
-            </h2>
-            <form onSubmit={handleFormSubmit}>
-              <div className="space-y-4">
-                <input type="text" name="nome" value={newConflictData.nome} onChange={handleInputChange} placeholder="Nome do Conflito" required className="w-full p-2 border rounded dark:bg-gray-700 dark:border-gray-600" />
-                <textarea name="descricao" value={newConflictData.descricao} onChange={handleInputChange} placeholder="Descrição sucinta do conflito" required rows="3" className="w-full p-2 border rounded dark:bg-gray-700 dark:border-gray-600"></textarea>
-                <select name="regiao" value={newConflictData.regiao} onChange={handleInputChange} required className="w-full p-2 border rounded dark:bg-gray-700 dark:border-gray-600">
-                  <option value="" disabled>Selecione uma região</option>
-                  {worldRegions.map(region => (
-                    <option key={region} value={region}>{region}</option>
-                  ))}
-                </select>
-                <input type="text" name="paises" value={newConflictData.paises} onChange={handleInputChange} placeholder="Países (separados por vírgula)" required className="w-full p-2 border rounded dark:bg-gray-700 dark:border-gray-600" />
-                <input
-                  type="text" 
-                  name="data_inicio" 
-                  value={newConflictData.data_inicio} onChange={handleDateChange} placeholder="Data de Início (dd/mm/aaaa)" required className="w-full p-2 border rounded dark:bg-gray-700 dark:border-gray-600" maxLength="10" />
+          {/* Modal do Formulário */}
+          {isFormVisible && (
+            <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+              <div className="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-xl w-full max-w-md">
+                <h2 className="text-2xl font-bold mb-6 text-primary dark:text-dark-text">
+                  {editingConflict ? "Editar Conflito" : "Adicionar Novo Conflito"}
+                </h2>
+                <form onSubmit={handleFormSubmit}>
+                  <div className="space-y-4">
+                    <input type="text" name="nome" value={newConflictData.nome} onChange={handleInputChange} placeholder="Nome do Conflito" required className="w-full p-2 border rounded dark:bg-gray-700 dark:border-gray-600" />
+                    <textarea name="descricao" value={newConflictData.descricao} onChange={handleInputChange} placeholder="Descrição sucinta do conflito" required rows="3" className="w-full p-2 border rounded dark:bg-gray-700 dark:border-gray-600"></textarea>
+                    <select name="regiao" value={newConflictData.regiao} onChange={handleInputChange} required className="w-full p-2 border rounded dark:bg-gray-700 dark:border-gray-600">
+                      <option value="" disabled>Selecione uma região</option>
+                      {worldRegions.map(region => (
+                        <option key={region} value={region}>{region}</option>
+                      ))}
+                    </select>
+                    <input type="text" name="paises" value={newConflictData.paises} onChange={handleInputChange} placeholder="Países (separados por vírgula)" required className="w-full p-2 border rounded dark:bg-gray-700 dark:border-gray-600" />
+                    <input
+                      type="text" 
+                      name="data_inicio" 
+                      value={newConflictData.data_inicio} onChange={handleDateChange} placeholder="Data de Início (dd/mm/aaaa)" required className="w-full p-2 border rounded dark:bg-gray-700 dark:border-gray-600" maxLength="10" />
+                  </div>
+                  <div className="flex justify-end space-x-4 mt-8">
+                    <button 
+                      type="button" 
+                      onClick={() => {
+                        setIsFormVisible(false);
+                        setEditingConflict(null);
+                      }}
+                      className="px-4 py-2 bg-gray-300 dark:bg-gray-600 rounded hover:bg-gray-400 dark:hover:bg-gray-500"
+                    >
+                      Cancelar
+                    </button>
+                    <button 
+                      type="submit"
+                      className="px-4 py-2 bg-button dark:bg-dark-secondary text-white rounded hover:bg-button-hover dark:hover:bg-dark-primary"
+                    >
+                      Salvar
+                    </button>
+                  </div>
+                </form>
               </div>
-              <div className="flex justify-end space-x-4 mt-8">
-                <button 
-                  type="button" 
-                  onClick={() => {
-                    setIsFormVisible(false);
-                    setEditingConflict(null);
-                  }}
-                  className="px-4 py-2 bg-gray-300 dark:bg-gray-600 rounded hover:bg-gray-400 dark:hover:bg-gray-500"
-                >
-                  Cancelar
-                </button>
-                <button 
-                  type="submit"
-                  className="px-4 py-2 bg-button dark:bg-dark-secondary text-white rounded hover:bg-button-hover dark:hover:bg-dark-primary"
-                >
-                  Salvar
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      )}
-
-      {/* Modal de Confirmação de Deleção */}
-      {isDeleteModalVisible && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
-          <div className="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-xl w-full max-w-md text-center">
-            <h2 className="text-2xl font-bold mb-4 text-primary dark:text-dark-text">
-              Confirmar Deleção
-            </h2>
-            <p className="text-secondary dark:text-dark-text/80 mb-8">
-              Tem certeza que deseja deletar este conflito? Esta ação não pode ser desfeita.
-            </p>
-            <div className="flex justify-center space-x-4">
-              <button 
-                type="button" 
-                onClick={() => {
-                  setIsDeleteModalVisible(false);
-                  setConflictToDeleteId(null);
-                }}
-                className="px-6 py-2 bg-gray-300 dark:bg-gray-600 rounded hover:bg-gray-400 dark:hover:bg-gray-500"
-              >
-                Cancelar
-              </button>
-              <button 
-                type="button"
-                onClick={confirmDelete}
-                className="px-6 py-2 bg-red-600 text-white rounded hover:bg-red-700"
-              >
-                Deletar
-              </button>
             </div>
-          </div>
-        </div>
+          )}
+
+          {/* Modal de Confirmação de Deleção */}
+          {isDeleteModalVisible && (
+            <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+              <div className="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-xl w-full max-w-md text-center">
+                <h2 className="text-2xl font-bold mb-4 text-primary dark:text-dark-text">
+                  Confirmar Deleção
+                </h2>
+                <p className="text-secondary dark:text-dark-text/80 mb-8">
+                  Tem certeza que deseja deletar este conflito? Esta ação não pode ser desfeita.
+                </p>
+                <div className="flex justify-center space-x-4">
+                  <button 
+                    type="button" 
+                    onClick={() => {
+                      setIsDeleteModalVisible(false);
+                      setConflictToDeleteId(null);
+                    }}
+                    className="px-6 py-2 bg-gray-300 dark:bg-gray-600 rounded hover:bg-gray-400 dark:hover:bg-gray-500"
+                  >
+                    Cancelar
+                  </button>
+                  <button 
+                    type="button"
+                    onClick={confirmDelete}
+                    className="px-6 py-2 bg-red-600 text-white rounded hover:bg-red-700"
+                  >
+                    Deletar
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
+        </>,
+        document.body
       )}
-    </>
+    </div>
   );
 }
 
