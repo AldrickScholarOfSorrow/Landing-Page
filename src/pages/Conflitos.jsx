@@ -86,7 +86,7 @@ function Conflitos() {
     const isEditing = !!editingConflict;
     const url = isEditing
       ? `${API_URL}/${editingConflict.id}`
-      : API_URL;
+      : `${API_URL}/create`; // Usa a nova rota explícita para criação
     const method = isEditing ? "PUT" : "POST";
 
     try {

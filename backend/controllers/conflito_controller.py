@@ -21,7 +21,7 @@ def get_conflitos():
     conflicts = get_all_conflicts()
     return jsonify(conflicts)
 
-@conflito_bp.route("/", methods=["POST"])
+@conflito_bp.route("/create", methods=["POST"])
 def post_conflito():
     """Endpoint para criar um novo conflito."""
     data = request.get_json()
