@@ -159,7 +159,7 @@ function Conflitos() {
   }
 
   return (
-    <div className="relative min-h-full">
+    <div className="relative min-h-full z-10">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 py-8">
         {conflicts.length > 0 ? (
           conflicts.map((c) => (
@@ -182,7 +182,7 @@ function Conflitos() {
           setNewConflictData({ nome: '', regiao: '', paises: '', data_inicio: '', descricao: '' });
           setIsFormVisible(true);
         }}
-        className="fixed bottom-8 right-8 bg-button dark:bg-dark-secondary text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:bg-button-hover dark:hover:bg-dark-primary transition-transform transform hover:scale-110"
+        className="fixed bottom-8 right-8 bg-button dark:bg-dark-secondary text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:bg-button-hover dark:hover:bg-dark-primary transition-transform transform hover:scale-110 z-20"
         aria-label="Adicionar Conflito"
       >
         <span className="text-3xl font-light">+</span>
