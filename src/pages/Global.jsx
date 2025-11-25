@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const API_URL = "https://landing-page-8m3i.onrender.com/conflicts/stats";
-
+const API_URL = "https://landing-page-8m3i.onrender.com/conflitos/global";
 
 function Global() {
   const [stats, setStats] = useState({ total_conflitos: 0, regiao_mais_ativa: "..." });

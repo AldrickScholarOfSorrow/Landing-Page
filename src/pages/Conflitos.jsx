@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ConflictCard from "../componentes/ConflictCard";
 
-const API_URL = "https://landing-page-8m3i.onrender.com/conflicts/";
+const API_URL = "https://landing-page-8m3i.onrender.com/conflitos/";
 
 const worldRegions = [
   "África",
