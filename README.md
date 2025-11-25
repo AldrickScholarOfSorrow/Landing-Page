@@ -1,47 +1,45 @@
-# 🌍 Landing Page — Conflitos Globais
+# CCG - Central de Conflitos Globais
 
-Site com sistema de exposição de dados de conflitos ativos no mundo. Criado com **React + Vite + Tailwind CSS**.  
-Parte do projeto acadêmico de Desenvolvimento de Software Multiplataforma, que futuramente exibirá dados de **conflitos ativos no mundo** via APIs como **ACLED** e **RestCountries**.
+Este é um projeto Full Stack que consiste em uma aplicação web para catalogar e visualizar conflitos globais. A aplicação permite aos usuários visualizar, adicionar, editar e deletar informações sobre conflitos, que são armazenadas em um banco de dados PostgreSQL.
 
-## 🚀 Tecnologias
-- React
-- Vite
-- Tailwind CSS
+## 🚀 Tecnologias Utilizadas
+
+### Frontend
+- **React**: Biblioteca para construção da interface de usuário.
+- **Vite**: Ferramenta de build para um desenvolvimento frontend rápido.
+- **Tailwind CSS**: Framework de CSS para estilização rápida e responsiva.
+- **React Router DOM**: Para gerenciamento de rotas no lado do cliente.
+
+### Backend
+- **Flask**: Microframework Python para a construção da API REST.
+- **PostgreSQL**: Banco de dados relacional para persistência dos dados.
+- **Psycopg**: Driver para conectar a aplicação Flask ao PostgreSQL.
+- **Flask-CORS**: Extensão para lidar com Cross-Origin Resource Sharing (CORS).
+
+### Hospedagem
+- **Render**: Para hospedagem do backend Flask e do banco de dados PostgreSQL.
+- **Vercel / Netlify** (sugestão): Para hospedagem do frontend React.
+
+---
 
 ## 🧱 Estrutura do Projeto
-
-O projeto é dividido em duas partes principais: o **Frontend** (React) e o **Backend** (Flask).
-
-### Frontend (`/src`)
-
-```text
-src/
-├── assets/             # Imagens e outros arquivos estáticos.
-├── componentes/        # Componentes de layout reutilizáveis.
-|   ├── ConflictCard.jsx  # Card individual para exibir um conflito.
-|   ├── Footer.jsx
-|   └── Header.jsx
-├── pages/              # Componentes que representam as páginas da aplicação.
-|   ├── Conflitos.jsx     # Página principal para listar e gerenciar conflitos (CRUD).
-|   ├── Global.jsx        # Página para exibir estatísticas globais.
-|   └── LandingPage.jsx   # Página inicial de apresentação do projeto.
-├── App.jsx             # Componente raiz que define o layout e as rotas.
-├── index.css           # Arquivo de estilos globais e diretivas do Tailwind.
-└── main.jsx            # Ponto de entrada da aplicação React.
-```
-
-### Backend (`/backend`)
 
 ```text
 backend/
 ├── controllers/
-|   └── conflito_controller.py  # Define as rotas da API (endpoints) para os conflitos.
+│   └── conflito_controller.py  # Lógica das rotas da API
 ├── models/
-|   └── conflito_model.py       # Gerencia a lógica de dados (leitura e escrita no JSON).
-├── temporary_data/
-|   └── conflicts_data.json     # Arquivo que funciona como banco de dados temporário.
+│   └── conflito_model.py       # Lógica de negócio e acesso ao DB
+├── .env                        # Arquivo de variáveis de ambiente (NÃO versionado)
+├── db.py                       # Configuração da conexão com o DB
 ├── main.py                     # Ponto de entrada da aplicação Flask.
 └── requirements.txt            # Lista de dependências do backend (Python).
+
+src/
+├── componentes/                # Componentes React reutilizáveis
+├── pages/                      # Páginas da aplicação (Global, Conflitos)
+├── App.jsx                     # Componente principal e roteamento
+└── main.jsx                    # Ponto de entrada da aplicação React
 ```
 
 O projeto rodará em: http://localhost:5173
