@@ -150,17 +150,16 @@ function Conflitos() {
     }
   };
 
-  // Renderização condicional baseada nos estados de loading e error
-  if (loading) {
-    return <div className="text-center py-10">Carregando conflitos...</div>;
-  }
-
-  if (error) {
-    return <div className="text-center py-10 text-red-500">{error}</div>;
-  }
-
   return (
     <div>
+      {/* Mensagem de erro ou loading, mas sem bloquear o resto da página */}
+      {loading && <div className="text-center py-4">Carregando conflitos...</div>}
+      {error && !loading && (
+        <div className="text-center py-4 text-red-500 bg-red-100 dark:bg-red-900/30 rounded-md">
+          {error} (Você ainda pode adicionar um novo conflito)
+        </div>
+      )}
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 py-8">
         {conflicts.length > 0 ? (
           conflicts.map((c) => (
