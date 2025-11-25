@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import ConflictCard from "../componentes/ConflictCard";
 
-const API_URL = "https://landing-page-sigma-eosin.vercel.app/api/conflicts/";
+const API_URL = "https://landing-page-sigma-eosin.vercel.app/api/conflicts";
 
 const worldRegions = [
   "África",

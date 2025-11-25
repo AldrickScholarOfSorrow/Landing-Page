@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/api/:path*",
-      "destination": "https://landing-page-8m3i.onrender.com/:path*"
+      "destination": "https://landing-page-8m3i.onrender.com/api/:path*"
     },
     {
       "source": "/((?!api/|_next/|static/|favicon.ico|assets/).*)",

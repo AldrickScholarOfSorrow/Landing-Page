@@ -9,7 +9,7 @@ function Global() {
     const fetchStats = async () => {
       try {
         setLoading(true);
-        const response = await fetch("https://landing-page-sigma-eosin.vercel.app/api/conflicts/stats");
+        const response = await fetch("https://landing-page-sigma-eosin.vercel.app/api/conflicts/stats"); // Esta já estava correta, sem a barra
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
