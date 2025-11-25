@@ -164,15 +164,9 @@ function Conflitos() {
         {conflicts.length > 0 ? (
           conflicts.map((c) => (
           <ConflictCard 
-            key={c.id} 
-            conflict={{
-              id: c.id,
-              title: c.nome,
-              region: c.regiao,
-              countries: c.paises.join(', '),
-              description: c.descricao,
-              date: c.data_inicio
-            }}
+            key={c.id}
+            // Passe o objeto de conflito inteiro diretamente.
+            conflict={c}
             onDelete={() => handleDelete(c.id)}
             onEdit={() => handleEdit(c)}
           />

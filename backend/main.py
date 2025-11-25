@@ -7,12 +7,12 @@ app = Flask(__name__)
 # Habilita o CORS para permitir requisições de qualquer origem.
 CORS(app)
 
-
 # Registra o Blueprint que contém as rotas de conflitos
 app.register_blueprint(conflito_bp)
 
 # Executa a aplicação
 if __name__ == '__main__':
     # O debug=True reinicia o servidor automaticamente a cada alteração no código.
-    # Em produção, isso deve ser False.
+    # O host="0.0.0.0" torna o servidor acessível na sua rede local.
     app.run(host="0.0.0.0", port=5000, debug=True)
+

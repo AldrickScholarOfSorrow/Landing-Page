@@ -14,6 +14,12 @@ def listar_conflitos():
     all_conflicts = conflicts_model.get_all_conflicts()
     return jsonify(all_conflicts)
 
+# Rota para obter estatísticas
+@conflito_bp.route("/stats", methods=["GET"])
+def obter_stats():
+    stats = conflicts_model.get_stats()
+    return jsonify(stats)
+
 # Rota para buscar um conflito específico
 @conflito_bp.route("/<int:conflict_id>", methods=["GET"])
 def obter_conflito(conflict_id):
@@ -27,7 +33,7 @@ def obter_conflito(conflict_id):
 def criar_conflito():
     data = request.get_json()
     # Cria um novo conflito usando os dados do formulário e salva no arquivo JSON
-    new_conflict = conflicts_model.create_conflict_mock(data)
+    new_conflict = conflicts_model.create_conflict(data)
     return jsonify(new_conflict), 201
 
 # Rota para deletar um conflito

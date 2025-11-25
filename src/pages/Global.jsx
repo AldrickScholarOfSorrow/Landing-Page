@@ -1,28 +1,37 @@
 import React, { useState, useEffect } from "react";
 
-// Lista de regiões para seleção aleatória
-const regions = [
-  "Oriente Médio",
-  "África Subsaariana",
-  "Sudeste Asiático",
-  "América do Sul",
-  "Leste Europeu",
-  "Norte da África",
-  "Ásia Central",
-];
+const API_URL = "https://landing-page-8m3i.onrender.com/conflicts/stats";
+
 
 function Global() {
-  const [activeConflicts, setActiveConflicts] = useState(0);
-  const [hottestRegion, setHottestRegion] = useState("");
+  const [stats, setStats] = useState({ total_conflitos: 0, regiao_mais_ativa: "..." });
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  // Gera os dados aleatórios quando o componente é montado
   useEffect(() => {
-    const conflictCount = Math.floor(Math.random() * (40 - 5 + 1)) + 5;
-    const region = regions[Math.floor(Math.random() * regions.length)];
+    const fetchStats = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch(API_URL);
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        setStats(data);
+      } catch (e) {
+        setError("Não foi possível carregar as estatísticas.");
+        console.error(e);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-    setActiveConflicts(conflictCount);
-    setHottestRegion(region);
+    fetchStats();
   }, []);
+
+  if (error) {
+    return <div className="text-center py-10 text-red-500">{error}</div>;
+  }
 
   return (
     <div className="flex flex-col items-center text-primary dark:text-dark-text py-12 transition-colors">
@@ -31,18 +40,19 @@ function Global() {
         {/* Card para Número de Conflitos Ativos */}
         <div className="bg-background dark:bg-dark-primary p-6 rounded-lg shadow-lg border border-secondary/20 dark:border-dark-secondary/50 text-center">
           <h3 className="text-lg font-semibold text-secondary dark:text-dark-secondary mb-2">Número de Conflitos Ativos</h3>
-          <p className="text-5xl font-bold text-primary dark:text-dark-text">{activeConflicts}</p>
+          <p className="text-5xl font-bold text-primary dark:text-dark-text">
+            {loading ? "..." : stats.total_conflitos}
+          </p>
         </div>
 
         {/* Card para Região Mais Ativa */}
         <div className="bg-background dark:bg-dark-primary p-6 rounded-lg shadow-lg border border-secondary/20 dark:border-dark-secondary/50 text-center">
           <h3 className="text-lg font-semibold text-secondary dark:text-dark-secondary mb-2">Onde mais acontece?</h3>
-          <p className="text-3xl font-bold text-primary dark:text-dark-text">{hottestRegion}</p>
+          <p className="text-3xl font-bold text-primary dark:text-dark-text">
+            {loading ? "..." : stats.regiao_mais_ativa}
+          </p>
         </div>
       </div>
-      <p className="mt-8 text-sm text-secondary/80 dark:text-dark-text/60">
-        *Dados meramente ilustrativos para fins de demonstração.
-      </p>
     </div>
   );
 }
