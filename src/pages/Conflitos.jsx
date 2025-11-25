@@ -103,16 +103,17 @@ function Conflitos() {
         } else {
           setConflicts(prev => [updatedOrNewConflict, ...prev]);
         }
+        // Limpa e fecha o formulário APENAS em caso de sucesso
+        setIsFormVisible(false);
+        setEditingConflict(null);
+        setNewConflictData({ nome: '', regiao: '', paises: '', data_inicio: '', descricao: '' });
       } else {
         throw new Error("Falha ao salvar o conflito.");
       }
     } catch (error) {
       console.error("Erro ao salvar conflito:", error);
+      alert("ERRO: Não foi possível salvar o conflito. Verifique o console para mais detalhes."); // Adiciona um alerta de erro visível
     }
-
-    setIsFormVisible(false); // Esconde o formulário
-    setEditingConflict(null); // Limpa o estado de edição
-    setNewConflictData({ nome: '', regiao: '', paises: '', data_inicio: '', descricao: '' }); // Limpa o formulário
   };
 
   // Abre o formulário para edição
