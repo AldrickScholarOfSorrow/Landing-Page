@@ -7,7 +7,8 @@ app = Flask(__name__)
 
 # Lista de origens permitidas.
 origins = [
-    "https://landing-page-sigma-eosin.vercel.app"  # Frontend em produção na Vercel
+    "https://landing-page-sigma-eosin.vercel.app", # Frontend em produção na Vercel
+    "http://localhost:5173"                        # Para desenvolvimento local
 ]
 
 # Habilita o CORS, especificando as origens permitidas para todos os recursos.
