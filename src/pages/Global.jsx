@@ -9,7 +9,7 @@ function Global() {
     const fetchStats = async () => {
       try {
         setLoading(true);
-        const response = await fetch("https://landing-page-8m3i.onrender.com/conflitos/global");
+        const response = await fetch("https://landing-page-8m3i.onrender.com/conflicts/stats");
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }

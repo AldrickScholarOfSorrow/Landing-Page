@@ -2,10 +2,10 @@ from flask import Blueprint, request, jsonify
 from models.conflito_model import get_all_conflicts, create_conflict, update_conflict, delete_conflict, get_conflict_stats
 
 
-# O url_prefix define que todas as rotas neste arquivo começarão com /conflitos
-conflito_bp = Blueprint("conflitos_bp", __name__, url_prefix="/conflitos")
+# O url_prefix define que todas as rotas neste arquivo começarão com /conflicts
+conflito_bp = Blueprint("conflicts_bp", __name__, url_prefix="/conflicts")
 
-@conflito_bp.route("/global", methods=["GET"])
+@conflito_bp.route("/stats", methods=["GET"])
 def stats_conflitos():
     """Endpoint para obter estatísticas dos conflitos."""
     try:
