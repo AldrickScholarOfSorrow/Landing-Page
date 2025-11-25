@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 
-const API_URL = "https://landing-page-8m3i.onrender.com/conflitos/global";
-
 function Global() {
   const [stats, setStats] = useState({ total_conflitos: 0, regiao_mais_ativa: "..." });
   const [loading, setLoading] = useState(true);
@@ -11,7 +9,7 @@ function Global() {
     const fetchStats = async () => {
       try {
         setLoading(true);
-        const response = await fetch(API_URL);
+        const response = await fetch("https://landing-page-8m3i.onrender.com/conflitos/global");
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
