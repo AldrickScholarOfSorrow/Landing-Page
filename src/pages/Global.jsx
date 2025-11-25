@@ -9,7 +9,7 @@ function Global() {
     const fetchStats = async () => {
       try {
         setLoading(true);
-        const response = await fetch("https://landing-page-8m3i.onrender.com/conflicts/stats");
+        const response = await fetch("https://landing-page-sigma-eosin.vercel.app/api/conflicts/stats");
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
